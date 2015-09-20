@@ -28,7 +28,7 @@ public class PixelCamera2D : MonoBehaviour
     {
         pixelCamera = GetComponent<Camera>();
 
-        CreateAndSetRenderTexture(targetWidth, targetHeight);
+        //CreateAndSetRenderTexture(targetWidth, targetHeight);
     }
 
     private void Update()
@@ -43,7 +43,7 @@ public class PixelCamera2D : MonoBehaviour
 
     private void UpdateCamera()
     {
-        CreateAndSetRenderTexture(targetWidth, targetHeight);
+        //CreateAndSetRenderTexture(targetWidth, targetHeight);
 
         if (behaviour == PixelCamera2DBehaviour.BestFit)
         {
@@ -61,8 +61,8 @@ public class PixelCamera2D : MonoBehaviour
         quad.sharedMaterial.mainTexture = renderTexture;
     }
 
-    private void CreateAndSetRenderTexture(int width, int height, bool release = false)
-    {
+    //private void CreateAndSetRenderTexture(int width, int height, bool release = false)
+    //{
         //if (pixelCamera.targetTexture != null)
         //{
         //    pixelCamera.targetTexture.DiscardContents();
@@ -74,7 +74,7 @@ public class PixelCamera2D : MonoBehaviour
 
         //quad.sharedMaterial.mainTexture = newRenderTexture;
         //pixelCamera.targetTexture = newRenderTexture;
-    }
+    //}
 
     private void BestFitBehaviour()
     {
@@ -112,18 +112,4 @@ public class PixelCamera2D : MonoBehaviour
         previousWidth = Screen.width;
         previousHeight = Screen.height;
     }
-
-    //private void OnDestroy()
-    //{
-    //    Debug.Log("OK");
-    //    if (pixelCamera.targetTexture != null)
-    //    {
-    //        pixelCamera.targetTexture.Release();
-    //    }
-    //}
-
-    //private void OnDisable()
-    //{
-    //    Debug.Log("OK");
-    //}
 }
