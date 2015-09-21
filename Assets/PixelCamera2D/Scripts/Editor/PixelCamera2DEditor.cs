@@ -1,50 +1,53 @@
 ﻿using UnityEngine;
 using UnityEditor;
 
-[CustomEditor(typeof(PixelCamera2D))]
-public class PixelCamera2DEditor : Editor
+namespace RyanNielson.PixelCamera2D
 {
-    public override void OnInspectorGUI()
+    [CustomEditor(typeof(PixelCamera2D))]
+    public class PixelCamera2DEditor : Editor
     {
-        DrawDefaultInspector();
-
-        DrawCreateRenderTextureButton((PixelCamera2D)target);
-    }
-
-    private void DrawCreateRenderTextureButton(PixelCamera2D pixelCamera2D)
-    {
-        if (GUILayout.Button("Create RenderTexture Asset"))
+        public override void OnInspectorGUI()
         {
-            RenderTexture renderTexture = CreateNewRenderTexture(pixelCamera2D.TargetWidth, pixelCamera2D.TargetHeight);
+            DrawDefaultInspector();
 
-            SaveNewRenderTexture(renderTexture, DeterminePath());
-
-            pixelCamera2D.SetRenderTexture(renderTexture);
+            DrawCreateRenderTextureButton((PixelCamera2D)target);
         }
-    }
 
-    private string DeterminePath()
-    {
-        return EditorUtility.SaveFilePanelInProject(
-            "Save RenderTexture",
-            "PixelCamera2D.renderTexture",
-            "renderTexture",
-            "Please enter a name for the PixelCamera2D render texture."
-        );
-    }
+        private void DrawCreateRenderTextureButton(PixelCamera2D pixelCamera2D)
+        {
+            if (GUILayout.Button("Create RenderTexture Asset"))
+            {
+                RenderTexture renderTexture = CreateNewRenderTexture(pixelCamera2D.TargetWidth, pixelCamera2D.TargetHeight);
 
-    private RenderTexture CreateNewRenderTexture(int width, int height)
-    {
-        RenderTexture renderTexture = new RenderTexture(width, height, 24, RenderTextureFormat.ARGB32);
-        renderTexture.filterMode = FilterMode.Point;
-        renderTexture.DiscardContents();
+                SaveNewRenderTexture(renderTexture, DeterminePath());
 
-        return renderTexture;
-    }
+                pixelCamera2D.SetRenderTexture(renderTexture);
+            }
+        }
 
-    private void SaveNewRenderTexture(RenderTexture renderTexture, string path)
-    {
-        AssetDatabase.CreateAsset(renderTexture, path);
-        AssetDatabase.Refresh();
+        private string DeterminePath()
+        {
+            return EditorUtility.SaveFilePanelInProject(
+                "Save RenderTexture",
+                "PixelCamera2D.renderTexture",
+                "renderTexture",
+                "Please enter a name for the PixelCamera2D render texture."
+            );
+        }
+
+        private RenderTexture CreateNewRenderTexture(int width, int height)
+        {
+            RenderTexture renderTexture = new RenderTexture(width, height, 24, RenderTextureFormat.ARGB32);
+            renderTexture.filterMode = FilterMode.Point;
+            renderTexture.DiscardContents();
+
+            return renderTexture;
+        }
+
+        private void SaveNewRenderTexture(RenderTexture renderTexture, string path)
+        {
+            AssetDatabase.CreateAsset(renderTexture, path);
+            AssetDatabase.Refresh();
+        }
     }
 }

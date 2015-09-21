@@ -1,8 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public enum PixelCamera2DBehaviour
+namespace RyanNielson.PixelCamera2D
 {
-    BestFit = 0,
-    Scale = 1
+    public enum PixelCamera2DBehaviour
+    {
+        BestPixelPerfectFit = 0,
+        ScaleToFit = 1
+    }
 }

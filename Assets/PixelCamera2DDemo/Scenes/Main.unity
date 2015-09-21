@@ -625,6 +625,14 @@ Prefab:
       propertyPath: m_TargetTexture
       value: 
       objectReference: {fileID: 8400000, guid: 954892804e9f1e34ab84798e1a093ed3, type: 2}
+    - target: {fileID: 199618, guid: 5d02a4c22e4863b4e879b42840169238, type: 2}
+      propertyPath: m_Name
+      value: PixelCamera2DRenderer
+      objectReference: {fileID: 0}
+    - target: {fileID: 115392, guid: 5d02a4c22e4863b4e879b42840169238, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5d02a4c22e4863b4e879b42840169238, type: 2}
   m_IsPrefabParent: 0

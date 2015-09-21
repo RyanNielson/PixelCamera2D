@@ -14,7 +14,7 @@ GameObject:
   - 81: {fileID: 8118622}
   - 114: {fileID: 11453068}
   m_Layer: 0
-  m_Name: PixelCamera
+  m_Name: PixelCamera2D
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
