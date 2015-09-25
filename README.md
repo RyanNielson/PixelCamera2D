@@ -1,7 +1,7 @@
 # PixelCamera2D
 A Pixel Perfect Camera for 2D Games in Unity.
 
-#### This is an early work in progress. Please report any issues you find. Also, feel free to contribute fixes or additions.
+##### This is an early work in progress. Please report any issues you find. Also, feel free to contribute fixes or additions.
 
 ## Why Should I Use PixelCamera2D?
 
@@ -36,7 +36,6 @@ Copy the `PixelCamera2D` folder into your `Assets` folder.
 ## Notes
 
 - To change your letterbox color just change the background color on the `PixelCamera2DRenderer` object.
-
 
 ## Demo
 
