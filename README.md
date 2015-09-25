@@ -36,3 +36,8 @@ Copy the `PixelCamera2D` folder into your `Assets` folder.
 ## Notes
 
 - To change your letterbox color just change the background color on the `PixelCamera2DRenderer` object.
+
+
+## Demo
+
+This project contains a demo in the `PixelCamera2DDemo` folder. This includes an example of static sprites, moving sprites, and a line renderer to show how each behaves.
