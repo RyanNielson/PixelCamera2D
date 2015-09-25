@@ -1,7 +1,4 @@
-﻿using UnityEngine;
-using System.Collections;
-
-namespace RyanNielson.PixelCamera2D
+﻿namespace RyanNielson.PixelCamera2D
 {
     public enum PixelCamera2DBehaviour
     {

@@ -17,7 +17,7 @@ namespace RyanNielson.PixelCamera2D
         {
             if (GUILayout.Button("Create RenderTexture Asset"))
             {
-                RenderTexture renderTexture = CreateNewRenderTexture(pixelCamera2D.TargetWidth, pixelCamera2D.TargetHeight);
+                RenderTexture renderTexture = CreateNewRenderTexture(pixelCamera2D.BaseWidth, pixelCamera2D.BaseHeight);
 
                 SaveNewRenderTexture(renderTexture, DeterminePath());
 

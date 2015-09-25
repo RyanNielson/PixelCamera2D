@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 namespace RyanNielson.PixelCamera2D
 {
@@ -7,10 +6,10 @@ namespace RyanNielson.PixelCamera2D
     public class PixelCamera2D : MonoBehaviour
     {
         [SerializeField]
-        private int targetWidth = 400;
+        private int baseWidth = 400;
 
         [SerializeField]
-        private int targetHeight = 240;
+        private int baseHeight = 240;
 
         [SerializeField]
         private PixelCamera2DBehaviour behaviour;
@@ -18,22 +17,34 @@ namespace RyanNielson.PixelCamera2D
         [SerializeField]
         private MeshRenderer quad;
 
-        public int TargetWidth { get { return targetWidth; } }
-        public int TargetHeight { get { return targetHeight; } }
+        public int BaseWidth { get { return baseWidth; } }
+        public int BaseHeight { get { return baseHeight; } }
 
         private Camera pixelCamera;
 
         private int previousWidth = 0;
         private int previousHeight = 0;
+        private PixelCamera2DBehaviour previousBehaviour;
+
+        private void OnEnable()
+        {
+            pixelCamera = GetComponent<Camera>();
+        }
 
         private void Update()
         {
-            if (Screen.width != previousWidth || Screen.height != previousHeight)
+            if (Screen.width != previousWidth || Screen.height != previousHeight || previousBehaviour != behaviour)
             {
-                UpdatePreviousSizes();
+                UpdatePreviousValues();
 
                 UpdateCamera();
             }
+        }
+
+        public void SetRenderTexture(RenderTexture renderTexture)
+        {
+            pixelCamera.targetTexture = renderTexture;
+            quad.sharedMaterial.mainTexture = renderTexture;
         }
 
         private void UpdateCamera()
@@ -48,30 +59,24 @@ namespace RyanNielson.PixelCamera2D
             }
         }
 
-        public void SetRenderTexture(RenderTexture renderTexture)
-        {
-            pixelCamera.targetTexture = renderTexture;
-            quad.sharedMaterial.mainTexture = renderTexture;
-        }
-
         private void BestFitBehaviour()
         {
-            int nearestWidth = Screen.width / targetWidth * targetWidth;
-            int nearestHeight = Screen.height / targetHeight * targetHeight;
+            int nearestWidth = Screen.width / baseWidth * baseWidth;
+            int nearestHeight = Screen.height / baseHeight * baseHeight;
 
-            int xScaleFactor = nearestWidth / targetWidth;
-            int yScaleFactor = nearestHeight / targetHeight;
+            int xScaleFactor = nearestWidth / baseWidth;
+            int yScaleFactor = nearestHeight / baseHeight;
 
             int scaleFactor = yScaleFactor < xScaleFactor ? yScaleFactor : xScaleFactor;
 
-            float heightRatio = (targetHeight * (float)scaleFactor) / Screen.height;
+            float heightRatio = (baseHeight * (float)scaleFactor) / Screen.height;
 
-            quad.transform.localScale = new Vector3(targetWidth / (float)targetHeight * heightRatio, 1f * heightRatio, 1f);
+            quad.transform.localScale = new Vector3(baseWidth / (float)baseHeight * heightRatio, 1f * heightRatio, 1f);
         }
 
         private void ScaleBehaviour()
         {
-            float targetAspectRatio = targetWidth / (float)targetHeight;
+            float targetAspectRatio = baseWidth / (float)baseHeight;
             float windowAspectRatio = Screen.width / (float)Screen.height;
             float scaleHeight = windowAspectRatio / targetAspectRatio;
 
@@ -85,18 +90,11 @@ namespace RyanNielson.PixelCamera2D
             }
         }
 
-        private void GetPixelCamera()
-        {
-            if (!pixelCamera)
-            {
-                pixelCamera = GetComponent<Camera>();
-            }
-        }
-
-        private void UpdatePreviousSizes()
+        private void UpdatePreviousValues()
         {
             previousWidth = Screen.width;
             previousHeight = Screen.height;
+            previousBehaviour = behaviour;
         }
     }
 }
