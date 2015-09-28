@@ -1237,14 +1237,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 408844, guid: 5d02a4c22e4863b4e879b42840169238, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 1.23456788
-      objectReference: {fileID: 0}
-    - target: {fileID: 408844, guid: 5d02a4c22e4863b4e879b42840169238, type: 2}
-      propertyPath: m_LocalScale.y
-      value: .740740716
-      objectReference: {fileID: 0}
     - target: {fileID: 2020874, guid: 5d02a4c22e4863b4e879b42840169238, type: 2}
       propertyPath: m_TargetTexture
       value: 
@@ -1255,11 +1247,23 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 2020874, guid: 5d02a4c22e4863b4e879b42840169238, type: 2}
       propertyPath: m_BackGroundColor.g
-      value: .582911015
+      value: .58431375
       objectReference: {fileID: 0}
     - target: {fileID: 2020874, guid: 5d02a4c22e4863b4e879b42840169238, type: 2}
       propertyPath: m_BackGroundColor.b
-      value: .698529422
+      value: .701960802
+      objectReference: {fileID: 0}
+    - target: {fileID: 2084274, guid: 5d02a4c22e4863b4e879b42840169238, type: 2}
+      propertyPath: m_NormalizedViewPortRect.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 408844, guid: 5d02a4c22e4863b4e879b42840169238, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 1.14613187
+      objectReference: {fileID: 0}
+    - target: {fileID: 408844, guid: 5d02a4c22e4863b4e879b42840169238, type: 2}
+      propertyPath: m_LocalScale.y
+      value: .687679112
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5d02a4c22e4863b4e879b42840169238, type: 2}

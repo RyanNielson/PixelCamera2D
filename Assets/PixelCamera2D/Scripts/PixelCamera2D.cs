@@ -21,6 +21,7 @@ namespace RyanNielson.PixelCamera2D
         public int BaseHeight { get { return baseHeight; } }
 
         private Camera pixelCamera;
+        private Camera pixelCameraRenderer;
 
         private int previousWidth = 0;
         private int previousHeight = 0;
@@ -29,6 +30,7 @@ namespace RyanNielson.PixelCamera2D
         private void OnEnable()
         {
             pixelCamera = GetComponent<Camera>();
+            pixelCameraRenderer = GetPixelCameraRenderer(pixelCamera);
         }
 
         private void Update()
@@ -72,6 +74,9 @@ namespace RyanNielson.PixelCamera2D
             float heightRatio = (baseHeight * (float)scaleFactor) / Screen.height;
 
             quad.transform.localScale = new Vector3(baseWidth / (float)baseHeight * heightRatio, 1f * heightRatio, 1f);
+
+            // Offset the camera rect in odd screen sizes to prevent subpixel issues.
+            pixelCameraRenderer.rect = new Rect(GetCameraRectOffset(Screen.width), GetCameraRectOffset(Screen.height), pixelCameraRenderer.rect.width, pixelCameraRenderer.rect.height);
         }
 
         private void ScaleBehaviour()
@@ -95,6 +100,24 @@ namespace RyanNielson.PixelCamera2D
             previousWidth = Screen.width;
             previousHeight = Screen.height;
             previousBehaviour = behaviour;
+        }
+
+        private Camera GetPixelCameraRenderer(Camera cameraToIgnore)
+        {
+            foreach (Camera possiblePixelCameraRenderer in GetComponentsInChildren<Camera>())
+            {
+                if (possiblePixelCameraRenderer != cameraToIgnore)
+                {
+                    return possiblePixelCameraRenderer;
+                }
+            }
+
+            return null;
+        }
+
+        private float GetCameraRectOffset(int size)
+        {
+            return size % 2 == 0 ? 0 : 1f / size;
         }
     }
 }
