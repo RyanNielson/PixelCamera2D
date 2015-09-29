@@ -39,4 +39,4 @@ Copy the `PixelCamera2D` folder into your `Assets` folder.
 
 ## Demo
 
-This project contains a demo in the `PixelCamera2DDemo` folder. This includes an example of static sprites, moving sprites, and a line renderer to show how each behaves.
+This project contains a demo in the `PixelCamera2DDemo` folder. This includes an example of static sprites, moving sprites, and a line renderer to show how each behaves. It also includes a button in play mode to enable and disable `PixelCamera2D` so that you can compare what your game would like with or without it.
