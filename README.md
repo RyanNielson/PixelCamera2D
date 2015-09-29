@@ -5,7 +5,7 @@ A Pixel Perfect Camera for 2D Games in Unity.
 
 ## Why Should I Use PixelCamera2D?
 
-Unity is a great engine, but it isn't perfect for 2D games that use pixel art. This can become evident when you try to rotate sprites or move sprites. Rotating sprites often results in perfectly diagonal edges that leave the pixel grid. Moving sprites can have a similar problem where pixels don't line up as expected.
+Unity is a great engine, but it isn't perfect for 2D games that use pixel art. This can become evident when you try to rotate sprites or move sprites. Rotating sprites often results in perfectly diagonal edges that leave the pixel grid. Moving sprites can have a similar problem where pixels don't line up as expected. Check out the [GIFs](#demo) below in the [Demo](#demo) section to see examples with and without PixelCamera2D.
 
 ## How It Works
 
@@ -40,3 +40,19 @@ Copy the `PixelCamera2D` folder into your `Assets` folder.
 ## Demo
 
 This project contains a demo in the `PixelCamera2DDemo` folder. This includes an example of static sprites, moving sprites, and a line renderer to show how each behaves. It also includes a button in play mode to enable and disable `PixelCamera2D` so that you can compare what your game would like with or without it.
+
+<a name="gifs"></a>
+
+#### Without PixelCamera2D
+
+![Without PixelCamera2D](http://i.imgur.com/I6kZml0.gif)
+
+Notice the differently sized pixels and smooth diagonal edges on the sprites and line.
+
+#### With PixelCamera2D
+
+![With PixelCamera2D](http://i.imgur.com/aTETXV0.gif)
+
+The pixels are now of equal size and the diagonal lines have been pixelated.
+
+
