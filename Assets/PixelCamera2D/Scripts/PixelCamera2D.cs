@@ -119,5 +119,39 @@ namespace RyanNielson.PixelCamera2D
         {
             return size % 2 == 0 ? 0 : 1f / size;
         }
+
+        public Vector3 ScreenToWorldPosition(Vector3 screenPosition)
+        {
+            int targetWidth  = baseWidth;
+            int targetHeight = baseHeight;
+
+            if (behaviour == PixelCamera2DBehaviour.BestPixelPerfectFit)
+            {
+                targetWidth  = Screen.width  / baseWidth  * baseWidth;
+                targetHeight = Screen.height / baseHeight * baseHeight;
+            }
+            else if (behaviour == PixelCamera2DBehaviour.ScaleToFit)
+            {
+                targetWidth = Screen.width;
+                targetHeight = Screen.height;
+            }
+
+            float xScaleFactor = (float)targetWidth / baseWidth;
+            float yScaleFactor = (float)targetHeight / baseHeight;
+            float scalefactor = Mathf.Min(xScaleFactor, yScaleFactor);
+
+            targetWidth = (int)(baseWidth * scalefactor);
+            targetHeight = (int)(baseHeight * scalefactor);
+
+            Vector3 offset = new Vector3(
+                (Screen.width - targetWidth) / 2,
+                (Screen.height - targetHeight) / 2,
+                0.0f);
+
+            Vector3 correctedPosition = (screenPosition - offset) / scalefactor;
+
+            return pixelCamera.ScreenToWorldPoint(correctedPosition);
+        }
     }
 }
+
