@@ -13,7 +13,7 @@ The setup used in `PixelCamera2D` uses two camera's, a quad, and a render textur
 
 This method makes pixel art games more consistant by removing perfectly straight diagonal lines and providing better scaling and letterboxing options.
 
-## Installation
+## Installation process
 
 Copy the `PixelCamera2D` folder into your `Assets` folder.
 
